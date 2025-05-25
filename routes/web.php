@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BahanBakuController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,16 +18,26 @@ Route::get('/', function () {
     return view('dashboard');
 });
 
-Route::get('/bahan.index', function () {
-    return view('bahan_baku.index');
-});
 
-Route::get('/bahan.create', function () {
-    return view('bahan_baku.create');
-});
-Route::get('/bahan.edit', function () {
-    return view('bahan_baku.edit');
-});
+// Tampilkan daftar bahan baku (index)
+Route::get('/bahanBaku', [BahanBakuController::class, 'index'])->name('bahanBaku.index');
+
+// Tampilkan form tambah bahan baku (create)
+Route::get('/bahanBakuCreate', [BahanBakuController::class, 'create'])->name('bahanBaku.create');
+
+// Proses simpan data bahan baku baru (store)
+Route::post('/bahanBaku', [BahanBakuController::class, 'store'])->name('bahanBaku.store');
+
+// Tampilkan form edit bahan baku tertentu (edit)
+Route::get('/bahanBaku{id}edit', [BahanBakuController::class, 'edit'])->name('bahanBaku.edit');
+
+// Proses update data bahan baku tertentu (update)
+Route::put('/bahanBaku/{id}', [BahanBakuController::class, 'update'])->name('bahanBaku.update');
+
+// Proses hapus data bahan baku tertentu (destroy)
+Route::delete('/bahanBaku/{id}', [BahanBakuController::class, 'destroy'])->name('bahanBaku.destroy');
+
+
 
 
 Route::get('/suplier.index', function () {

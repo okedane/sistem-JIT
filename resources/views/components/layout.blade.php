@@ -54,7 +54,30 @@
     <main class="main-wrapper">
         <div class="main-content">
             {{ $slot }}
+
+            {{-- Notifikasi sukses --}}
+            @if (session('success'))
+                <div class="alert alert-success">{{ session('success') }}</div>
+            @endif
+
+            {{-- Notifikasi error umum --}}
+            @if (session('error'))
+                <div class="alert alert-danger">{{ session('error') }}</div>
+            @endif
+
+            {{-- Notifikasi validasi --}}
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul class="mb-0">
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
         </div>
+
+
     </main>
     <!--end main wrapper-->
 
@@ -152,10 +175,10 @@
     <script src="assets/plugins/metismenu/metisMenu.min.js"></script>
     <script src="assets/plugins/apexchart/apexcharts.min.js"></script>
     <script src="assets/plugins/simplebar/js/simplebar.min.js"></script>
-      <script src="assets/plugins/apexchart/apex-custom-chart.js"></script>
+    <script src="assets/plugins/apexchart/apex-custom-chart.js"></script>
     <script src="assets/plugins/peity/jquery.peity.min.js"></script>
 
-    
+
     <script>
         $(".data-attributes span").peity("donut")
     </script>

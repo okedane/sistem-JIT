@@ -23,7 +23,7 @@
                    </a>
                </li>
                <li>
-                   <a href="/bahan.index">
+                   <a href="{{ route('bahanBaku.index') }}">
                        <div class="parent-icon"><i class="material-icons-outlined">inventory</i></div>
                        <div class="menu-title">Bahan Baku</div>
                    </a>
