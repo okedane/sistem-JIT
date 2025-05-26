@@ -20,4 +20,13 @@ class BahanBaku extends Model
         'stok',
         'gambar',
     ];
+
+    public function transaksiMasuk()
+    {
+        return $this->hasMany(TransaksiMasuk::class, 'bahan_baku_id');
+    }
+    public function transaksiKeluar()
+    {
+        return $this->hasMany(TransaksiKeluar::class, 'bahan_baku_id');
+    }
 }

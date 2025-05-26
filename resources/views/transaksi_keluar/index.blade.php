@@ -20,7 +20,7 @@
                     <div>
                         <h5 class="mb-0">Transaksi Bahan Baku Keluar</h5>
                     </div>
-                    <a href="/transaksi-keluar.create" class="btn btn-primary px-3">
+                    <a href="{{ route('transaksi_keluar.create') }}" class="btn btn-primary px-3">
                         <i class="bx bx-plus me-1"></i>Tambah Transaksi
                     </a>
                 </div>
@@ -32,26 +32,25 @@
                         <thead class="table-light">
                             <tr>
                                 <th width="5%">No</th>
-                                <th width="10%">ID Trx</th>
                                 <th width="20%">Penerima</th>
                                 <th width="10%">Suplier</th>
                                 <th width="10%">Bahan Baku</th>
                                 <th width="10%">Stok Keluar</th>
                                 <th width="10%">Tanggal Keluar</th>
-                                <th width="10%">Harga</th>
+                              
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td class="text-center">1</td>
-                                <td>Tr001</td>
-                                <td>Admin</td>
-                                <td>Suplier 1</td>
-                                <td>BB001</td>
-                                <td>100</td>
-                                <td class="text-center">2023-10-01</td>
-                                <td class="text-end">Rp 10.000</td>
-                            </tr>
+                            @foreach ($transaksiKeluars as $item)
+                                <tr>
+                                    <td class="text-center">{{ $loop->iteration }}</td>
+                                    <td>{{ $item->penerima }}</td>
+                                    <td>{{ $item->suplier->nama }}</td>
+                                    <td>{{ $item->bahanBaku->nama }}</td>
+                                    <td class="text-end">{{ $item->stok_keluar }}</td>
+                                    <td>{{ \Carbon\Carbon::parse($item->tanggal_keluar)->format('d-m-Y') }}</td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

@@ -17,37 +17,37 @@
         <div class="card">
             <div class="card-body p-4">
                 <h5 class="mb-4">Form Edit Suplier</h5>
-                <form class="row g-3" action="" method="POST">
+                <form class="row g-3" action="{{ route('supplier.update', $supplier->id) }}" method="POST">
                     @csrf
                     @method('PUT')
                     <div class="col-md-12">
                         <label for="id_suplier" class="form-label">ID Suplier</label>
-                        <input type="text" class="form-control" id="id_suplier" name="id_suplier" value="" required>
+                        <input type="text" class="form-control" id="id_suplier" name="id_suplier" value="{{ old('id_suplier', $supplier->id_suplier) }}" required>
                     </div>
                     <div class="col-md-12">
-                        <label for="nama_suplier" class="form-label">Nama Suplier</label>
-                        <input type="text" class="form-control" id="nama_suplier" name="nama_suplier" value="" required>
+                        <label for="nama" class="form-label">Nama Suplier</label>
+                        <input type="text" class="form-control" id="nama" name="nama" value="{{ old('nama', $supplier->nama) }}" required>
                     </div>
                     <div class="col-md-12">
                         <label for="alamat" class="form-label">Alamat</label>
-                        <textarea class="form-control" id="alamat" name="alamat" placeholder="Alamat ..." rows="3" required></textarea>
+                        <textarea class="form-control" id="alamat" name="alamat" placeholder="Alamat ..." rows="3" required>{{ old('alamat', $supplier->alamat) }}</textarea>
                     </div>
                     <div class="col-md-12">
                         <label for="telepon" class="form-label">Telepon</label>
-                        <input type="text" class="form-control" id="telepon" name="telepon" value="" required>
+                        <input type="text" class="form-control" id="telepon" name="telepon" value="{{ old('telepon', $supplier->telepon) }}" required>
                     </div>
                     <div class="col-md-12">
                         <label for="kota" class="form-label">Kota</label>
-                        <input type="text" class="form-control" id="kota" name="kota" value="" required>
+                        <input type="text" class="form-control" id="kota" name="kota" value="{{ old('kota', $supplier->kota) }}" required>
                     </div>
                     <div class="col-md-12">
                         <label for="provinsi" class="form-label">Provinsi</label>
-                        <input type="text" class="form-control" id="provinsi" name="provinsi" value="" required>
+                        <input type="text" class="form-control" id="provinsi" name="provinsi" value="{{ old('provinsi', $supplier->provinsi) }}" required>
                     </div>
                     <div class="col-md-12">
                         <div class="d-flex justify-content-end align-items-center gap-3">
                             <button type="submit" class="btn btn-warning px-4">Update</button>
-                            <a href="{{ url('/suplier') }}" class="btn btn-secondary px-4">Batal</a>
+                            <a href="{{ route('supplier.index') }}" class="btn btn-secondary px-4">Batal</a>
                         </div>
                     </div>
                 </form>

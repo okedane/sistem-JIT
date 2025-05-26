@@ -13,6 +13,12 @@ return new class extends Migration
     {
         Schema::create('supliers', function (Blueprint $table) {
             $table->id();
+            $table->string('id_suplier')->unique();
+            $table->string('nama');
+            $table->string('alamat');
+            $table->string('telepon')->nullable();
+            $table->string('kota');
+            $table->string('provinsi');
             $table->timestamps();
         });
     }
